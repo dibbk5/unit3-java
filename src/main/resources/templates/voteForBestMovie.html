@@ -6,12 +6,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<a href="/">Home</a>
-    <form>
-        <p>Movie Title: <input type="text" name="movieTitle"/></p>
-        <p><input type="submit" value="Submit"/> </p>
-        <p></p>
-        <p th:text="'Your Favorite Movie is: ' + ${BestMovieVote}"></p>
+    <form action="voteForBestMovie" method="PUT">
+        <p>Your Name: <input type="text" name="voterName"> </p>
+        <select name="movieId">
+            <option value="0">select movie</option>
+            <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.title}"></option>
+        </select>
+        <p><input type="submit" value="Submit"></input></p>
     </form>
+<a href="/">Home</a>
 </body>
 </html>
